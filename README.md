@@ -43,3 +43,7 @@ Then, in another terminal window also inside the ATWallet folder...
 ```
 npx react-native run-ios
 ```
+
+### Visual Studio Code ###
+
+React Native uses JavaScript with the [Flow](https://flow.org/en/) static type checker. You will need to install the [Flow Language Support](https://marketplace.visualstudio.com/items?itemName=flowtype.flow-for-vscode) extension.
