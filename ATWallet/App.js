@@ -1,13 +1,5 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow strict-local
- */
 
 import React from 'react';
-import type { Node } from 'react';
 import {
   SafeAreaView,
   ScrollView,
@@ -16,13 +8,16 @@ import {
   View,
 } from 'react-native';
 
-const App: () => Node = () => {
+import ATLogo from './assets/ATLogo.js';
+
+const App = () => {
   return (
     <SafeAreaView>
       <StatusBar />
       <ScrollView contentInsetAdjustmentBehavior="automatic">
         <View>
           <Text>AT Verifiable Credential Wallet</Text>
+          <ATLogo height="44" width="44" />
         </View>
       </ScrollView>
     </SafeAreaView>
