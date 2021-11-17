@@ -47,3 +47,7 @@ npx react-native run-ios
 ### Visual Studio Code ###
 
 React Native uses JavaScript with the [Flow](https://flow.org/en/) static type checker. You will need to install the [Flow Language Support](https://marketplace.visualstudio.com/items?itemName=flowtype.flow-for-vscode) extension.
+
+Then disable the built-in JavaScript validation. Code -> Preferences -> Settings, search for `javascript.validate.enable` and switch off (disable) for this **workspace**.
+
+![Visual Studio Code javascript.validate.enable setting](vscode_js.png)
