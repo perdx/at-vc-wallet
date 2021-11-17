@@ -1,26 +1,26 @@
 
 import React from 'react';
 import {
+  FlatList,
   SafeAreaView,
   ScrollView,
-  StatusBar,
   Text,
   View,
 } from 'react-native';
 
-import ATLogo from './assets/ATLogo.js';
+import VCListItem from './credential/VCListItem';
+import MainView from './layout/MainView';
 
 const App = () => {
   return (
-    <SafeAreaView>
-      <StatusBar />
-      <ScrollView contentInsetAdjustmentBehavior="automatic">
-        <View>
-          <Text>AT Verifiable Credential Wallet</Text>
-          <ATLogo height="44" width="44" />
-        </View>
-      </ScrollView>
-    </SafeAreaView>
+    <MainView>
+      <FlatList
+        data={[{ key: 'MyAT', name: 'MyAT' }]}
+        renderItem={
+          ({ item }) => <VCListItem vcName={item.name} />
+        }
+      />
+    </MainView>
   );
 };
 
