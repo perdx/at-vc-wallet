@@ -1,8 +1,8 @@
 import React from 'react';
 
-import { View } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 
-import { displayName as appName } from '../app.json';
+import { displayName as appName } from '../../app.json';
 import TitleAppbar from './TitleAppbar';
 
 const MainView = (props) => {
@@ -16,7 +16,7 @@ const MainView = (props) => {
     };
 
     return (
-        <View>
+        <View style={styles.container}>
             <TitleAppbar appName={appName} onOpenDrawer={openDrawer} onAddVC={addVC} />
             {props.children}
         </View>
@@ -24,3 +24,9 @@ const MainView = (props) => {
 };
 
 export default MainView;
+
+const styles = StyleSheet.create({
+    container: {
+        height: '100%',
+    },
+});

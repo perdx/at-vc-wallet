@@ -44,3 +44,11 @@ Then, in another terminal window also inside the ATWallet folder...
 npx react-native run-ios
 ```
 
+## Material Design ##
+
+[React Native Paper](https://callstack.github.io/react-native-paper/index.html) to provide components and styling
+consistent with [Material Design](https://material.io/design).
+
+Try to avoid using local component styles as much as possible. Instead override defaults in the custom theme or provide a thin wrapper around Paper components.
+
+

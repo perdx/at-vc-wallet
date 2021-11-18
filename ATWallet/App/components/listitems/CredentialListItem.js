@@ -3,28 +3,29 @@ import React from 'react';
 import { StyleSheet } from 'react-native';
 import { IconButton, List, useTheme } from 'react-native-paper';
 
-import ATLogo from '../assets/ATLogo';
+import ATLogo from '../../assets/ATLogo';
 
-const VCListItem = (props) => {
-    const { vcName } = props;
+const CredentialListItem = (props) => {
+    const { credential } = props;
     const theme = useTheme();
 
-    const goToVC = () => {
+    // TODO: Navigation
+    const goToCredential = () => {
         console.log('Go to VC details');
     };
 
     return (
         <List.Item
-            onPress={goToVC}
-            title={vcName}
+            onPress={goToCredential}
+            title={credential.title}
             left={() => <ATLogo width="60" height="60" />}
-            right={() => <IconButton icon="chevron-right" onPress={goToVC} size={32} />}
+            right={() => <IconButton icon="chevron-right" onPress={goToCredential} size={32} />}
             style={styles(theme).listItem}
         />
     );
 };
 
-export default VCListItem;
+export default CredentialListItem;
 
 const styles = theme => StyleSheet.create({
     listItem: {
