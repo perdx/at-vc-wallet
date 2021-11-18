@@ -1,16 +1,25 @@
 import React from 'react';
 
-import { SafeAreaView } from 'react-native';
+import { View } from 'react-native';
 
 import { displayName as appName } from '../app.json';
 import TitleAppbar from './TitleAppbar';
 
 const MainView = (props) => {
+
+    const openDrawer = () => {
+        console.log('Open drawer');
+    };
+
+    const addVC = () => {
+        console.log('Add verifiable credential');
+    };
+
     return (
-        <SafeAreaView>
-            <TitleAppbar appName={appName} />
+        <View>
+            <TitleAppbar appName={appName} onOpenDrawer={openDrawer} onAddVC={addVC} />
             {props.children}
-        </SafeAreaView>
+        </View>
     );
 };
 
