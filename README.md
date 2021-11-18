@@ -46,9 +46,11 @@ npx react-native run-ios
 
 ## Material Design ##
 
-[React Native Paper](https://callstack.github.io/react-native-paper/index.html) to provide components and styling
-consistent with [Material Design](https://material.io/design).
+[React Native Paper](https://callstack.github.io/react-native-paper/index.html) provides components and styling consistent with [Material Design](https://material.io/design).
 
 Try to avoid using local component styles as much as possible. Instead override defaults in the custom theme or provide a thin wrapper around Paper components.
 
+## Navigation ##
+
+[React Navigation](https://reactnavigation.org/docs/getting-started) provides routing.
 

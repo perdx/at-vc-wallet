@@ -4,21 +4,14 @@ import { StyleSheet } from 'react-native';
 import { Appbar } from 'react-native-paper';
 
 const TitleAppbar = (props) => {
-    const { appName, onOpenDrawer, onAddVC } = props;
-
-    const handleOpenDrawer = () => {
-        onOpenDrawer();
-    };
-
-    const handleAddVC = () => {
-        onAddVC();
-    };
+    const { back, navigation, options } = props;
 
     return (
         <Appbar.Header style={styles.header}>
-            <Appbar.Action icon="menu" onPress={handleOpenDrawer} />
-            <Appbar.Content title={appName} />
-            <Appbar.Action icon="plus-thick" onPress={handleAddVC} />
+            {back ? <Appbar.BackAction onPress={navigation.goBack} /> : null}
+            <Appbar.Action icon="menu" />
+            <Appbar.Content title={options.title} />
+            <Appbar.Action icon="plus-thick" />
         </Appbar.Header>
     );
 };

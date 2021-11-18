@@ -1,16 +1,13 @@
 
 import React from 'react';
 
-import ListCredentials from './App/screens/ListCredentials';
-import MainView from './App/layout/MainView';
+import RootStack from './App/navigators/RootStack';
 
 // TODO: Use react-navigation, set up navigators
 
 const App = () => {
   return (
-    <MainView>
-      <ListCredentials />
-    </MainView>
+    <RootStack />
   );
 };
 

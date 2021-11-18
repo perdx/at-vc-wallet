@@ -4,6 +4,7 @@ import { FlatList } from 'react-native';
 import { List } from 'react-native-paper';
 
 import CredentialListItem from '../components/listitems/CredentialListItem';
+import Screen from './Screen';
 
 // TODO: Get credential list from storage. Access via a hook.
 //       Consider using same VC schema as back end without mappings.
@@ -33,10 +34,10 @@ const ListCredentials = () => {
     return (
         <FlatList
             data={credentials}
-            keyExtractor={(item) => item.id}
+            keyExtractor={(c) => c.id}
             ListEmptyComponent={() => <EmptyListItem />}
-            renderItem={(item) =>
-                <CredentialListItem credential={item.item} onItemSelected={() => onItemSelected(item)} />
+            renderItem={(c) =>
+                <CredentialListItem credential={c.item} onItemSelected={() => onItemSelected(c)} />
             }
         />
     );

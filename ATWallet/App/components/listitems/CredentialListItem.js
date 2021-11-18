@@ -33,5 +33,6 @@ const styles = theme => StyleSheet.create({
         borderBottomWidth: 1,
         paddingTop: 16,
         paddingBottom: 16,
+        backgroundColor: theme.colors.surface,
     },
 });
