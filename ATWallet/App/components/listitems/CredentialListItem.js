@@ -3,7 +3,7 @@ import React from 'react';
 import { StyleSheet } from 'react-native';
 import { IconButton, List, useTheme } from 'react-native-paper';
 
-import ATLogo from '../../assets/ATLogo';
+import ATLogo from '../../../assets/ATLogo';
 
 const CredentialListItem = (props) => {
     const { credential } = props;

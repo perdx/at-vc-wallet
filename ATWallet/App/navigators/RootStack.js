@@ -1,23 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { createStackNavigator } from '@react-navigation/stack';
 
-import Home from '../screens/Home';
-import ListCredentials from '../screens/ListCredentials';
-import TitleAppbar from '../layout/TitleAppbar';
+import AuthStack from './AuthStack';
+import MainStack from './MainStack';
 
-const Stack = createNativeStackNavigator();
+const Stack = createStackNavigator();
 
 const RootStack = () => {
+    const [auth, setAuth] = useState(false);
     return (
-        <Stack.Navigator
-            initialRouteName="Home"
-            screenOptions={{
-                header: (props) => <TitleAppbar {...props} />,
-            }}
-        >
-            <Stack.Screen name="Home" component={Home} options={{ title: 'Welcome' }} />
-            <Stack.Screen name="Credentials" component={ListCredentials} options={{ title: 'Credentials' }} />
+        <Stack.Navigator screenOptions={{ headerShown: false }} >
+            {auth ? (
+                <Stack.Screen name="Main" component={MainStack} />
+            ) : (
+                <Stack.Screen name="Auth" options={{ presentation: 'modal' }}>
+                    {() => <AuthStack setAuth={setAuth} />}
+                </Stack.Screen>
+            )}
         </Stack.Navigator>
     );
 };

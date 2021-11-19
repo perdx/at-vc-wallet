@@ -2,16 +2,16 @@ import React from 'react';
 
 import { Button } from 'react-native-paper';
 
-import Screen from './Screen';
+import StdView from '../components/views/StdView';
 
 const Home = (props) => {
     const { navigation } = props;
     return (
-        <Screen>
+        <StdView>
             <Button mode="contained" onPress={() => navigation.navigate('Credentials')}>
                 View Credentials
             </Button>
-        </Screen>
+        </StdView>
     );
 };
 

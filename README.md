@@ -54,3 +54,11 @@ Try to avoid using local component styles as much as possible. Instead override 
 
 [React Navigation](https://reactnavigation.org/docs/getting-started) provides routing.
 
+## Developer Tips ##
+
+1. (Mac users) Whenever you install a new npm package, run cocoapods install too in order to get the corresponding native libraries installed for ios builds. For example,
+
+```
+npm install react-native-keychain
+npx pod-install ios
+```
