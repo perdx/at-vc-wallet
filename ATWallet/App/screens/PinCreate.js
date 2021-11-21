@@ -3,7 +3,7 @@ import { Alert, Keyboard, StyleSheet, View } from 'react-native';
 import * as Keychain from 'react-native-keychain';
 import { Button, TextInput } from 'react-native-paper';
 
-import { SaveAreaScrollView } from '../components/views/SafeAreaScrollView';
+import SafeAreaScrollView from '../components/views/SafeAreaScrollView';
 
 // TODO: (Short term) Make this more PIN-like with separate inputs for each digit.
 // TODO: Augment with native phone auth like fingerprint or face recognition.
@@ -33,7 +33,7 @@ const PinCreate = props => {
     };
 
     return (
-        <SaveAreaScrollView>
+        <SafeAreaScrollView>
             <View style={styles.row}>
                 <TextInput
                     mode="outlined"
@@ -44,6 +44,7 @@ const PinCreate = props => {
                     secureTextEntry={true}
                     value={pin}
                     onChangeText={setPin}
+                    style={styles.input}
                 />
             </View>
             <View style={styles.row}>
@@ -61,6 +62,7 @@ const PinCreate = props => {
                             Keyboard.dismiss();
                         }
                     }}
+                    style={styles.input}
                 />
             </View>
             <View style={styles.row}>
@@ -70,11 +72,12 @@ const PinCreate = props => {
                         Keyboard.dismiss();
                         confirmEntry(pin, pin2);
                     }}
+                    style={styles.button}
                 >
                     Create
                 </Button>
             </View>
-        </SaveAreaScrollView>
+        </SafeAreaScrollView>
     );
 };
 
@@ -86,6 +89,13 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'center',
         alignSelf: 'stretch',
-        margin: '8px 24px 8px 24px',
+        // padding: () => padding(8, 24, 8, 24),
+    },
+    input: {
+        width: 200,
+        marginTop: 24,
+    },
+    button: {
+        marginTop: 16,
     },
 });
