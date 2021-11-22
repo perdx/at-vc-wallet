@@ -4,9 +4,9 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { useTheme } from 'react-native-paper';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
-import Home from '../screens/Home';
-import CredentialsList from '../screens/CredentialsList';
+import HomeStack from './HomeStack';
 import TitleAppbar from '../components/views/TitleAppbar';
+import CredentialsList from '../screens/CredentialsList';
 
 const Tab = createBottomTabNavigator();
 
@@ -14,9 +14,9 @@ const MainStack = () => {
     const theme = useTheme();
 
     const routes = {
-        Home: {
+        HomeTab: {
             iconName: 'home',
-            component: <Home />,
+            component: <HomeStack />,
             title: 'AT Wallet',
         },
         Credentials: {
@@ -29,7 +29,7 @@ const MainStack = () => {
 
     return (
         <Tab.Navigator
-            initialRouteName="Home"
+            initialRouteName="HomeTab"
             screenOptions={({ route }) => ({
                 header: (props) => <TitleAppbar {...props} />,
                 tabBarIcon: ({ focused }) => <Icon
