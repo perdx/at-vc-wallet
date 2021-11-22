@@ -89,7 +89,6 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'center',
         alignSelf: 'stretch',
-        // padding: () => padding(8, 24, 8, 24),
     },
     input: {
         width: 200,

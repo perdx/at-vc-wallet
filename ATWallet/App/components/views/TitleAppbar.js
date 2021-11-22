@@ -9,9 +9,7 @@ const TitleAppbar = (props) => {
     return (
         <Appbar.Header style={styles.header}>
             {back ? <Appbar.BackAction onPress={navigation.goBack} /> : null}
-            <Appbar.Action icon="menu" />
             <Appbar.Content title={options.title} />
-            <Appbar.Action icon="plus-thick" />
         </Appbar.Header>
     );
 };

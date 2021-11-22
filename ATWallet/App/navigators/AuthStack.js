@@ -4,6 +4,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { createStackNavigator } from '@react-navigation/stack';
 import * as Keychain from 'react-native-keychain';
 
+import TitleAppbar from '../components/views/TitleAppbar';
 import PinCreate from '../screens/PinCreate';
 import PinEnter from '../screens/PinEnter';
 import Terms from '../screens/Terms';
@@ -36,15 +37,18 @@ const AuthStack = (props) => {
     }, []);
 
     return (
-        <Stack.Navigator screenOptions={{ presentation: 'transparentModal', headerShown: 'false' }}>
+        <Stack.Navigator
+            screenOptions={{
+                header: (headerProps) => <TitleAppbar {...headerProps} />,
+            }}>
             {firstSignIn ? (
                 <Stack.Group>
-                    <Stack.Screen name="Terms & Conditions" component={Terms} />
-                    <Stack.Screen name="Create Pin" component={PinCreate} initialParams={{ setAuth }} />
+                    <Stack.Screen name="Terms & Conditions" component={Terms} options={{ title: 'Terms & Conditions' }} />
+                    <Stack.Screen name="Create PIN" component={PinCreate} initialParams={{ setAuth }} options={{ title: 'Create PIN' }} />
                 </Stack.Group>
             ) : (
                 <Stack.Group>
-                    <Stack.Screen name="Enter Pin" component={PinEnter} initialParams={{ setAuth }} />
+                    <Stack.Screen name="Enter PIN" component={PinEnter} initialParams={{ setAuth }} options={{ title: 'Enter PIN' }} />
                 </Stack.Group>
             )}
         </Stack.Navigator>

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { Alert, Keyboard } from 'react-native';
+import { Alert, Keyboard, StyleSheet, View } from 'react-native';
 import * as Keychain from 'react-native-keychain';
 import { Button, TextInput } from 'react-native-paper';
 
@@ -23,32 +23,54 @@ const PinEnter = props => {
 
     return (
         <SafeAreaScrollView>
-            <TextInput
-                mode="outlined"
-                label="Enter PIN"
-                placeholder={`${nDigits}-digit PIN`}
-                maxLength={nDigits}
-                keyboardType="numeric"
-                secureTextEntry={true}
-                value={pin}
-                onChangeText={(p) => {
-                    setPin(p);
-                    if (p.length === nDigits) {
+            <View style={styles.row}>
+                <TextInput
+                    mode="outlined"
+                    label="Enter PIN"
+                    placeholder={`${nDigits}-digit PIN`}
+                    maxLength={nDigits}
+                    keyboardType="numeric"
+                    secureTextEntry={true}
+                    value={pin}
+                    onChangeText={(p) => {
+                        setPin(p);
+                        if (p.length === nDigits) {
+                            Keyboard.dismiss();
+                        }
+                    }}
+                    style={styles.input}
+                />
+            </View>
+            <View style={styles.row}>
+                <Button
+                    mode="contained"
+                    onPress={() => {
                         Keyboard.dismiss();
-                    }
-                }}
-            />
-            <Button
-                mode="contained"
-                onPress={() => {
-                    Keyboard.dismiss();
-                    checkPin(pin);
-                }}
-            >
-                Enter
-            </Button>
+                        checkPin(pin);
+                    }}
+                    style={styles.button}
+                >
+                    Enter
+                </Button>
+            </View>
         </SafeAreaScrollView>
     );
 };
 
 export default PinEnter;
+
+const styles = StyleSheet.create({
+    row: {
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignSelf: 'stretch',
+    },
+    input: {
+        width: 200,
+        marginTop: 24,
+    },
+    button: {
+        marginTop: 24,
+    },
+});
