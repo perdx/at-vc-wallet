@@ -1,23 +1,8 @@
-import React, { createContext, useState, useContext } from 'react';
+import React, { createContext, useContext, useEffect, useState } from 'react';
 
 import * as Keychain from 'react-native-keychain';
 
 const CredentialContext = createContext(undefined);
-
-const reducer = (state, action) => {
-    switch (action.type) {
-        case 'add': {
-            const credentials = state.credentials.slice();
-            credentials.push(action.payload.credential);
-            return {
-                ...state,
-                credentials,
-            };
-        }
-        default:
-            throw new Error(`Unhandled action type: ${action.type}`);
-    }
-};
 
 export const useCredentials = () => {
     const context = useContext(CredentialContext);
@@ -37,6 +22,10 @@ const CredentialProvider = (props) => {
         credentials: [],
         loading: true,
     });
+
+    useEffect(() => {
+        load();
+    }, []);
 
     // Retrieve credential list from local keychain storage.
     const load = async () => {
