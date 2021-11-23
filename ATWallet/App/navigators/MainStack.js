@@ -6,7 +6,6 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 
 import HomeStack from './HomeStack';
 import TitleAppbar from '../components/views/TitleAppbar';
-import CredentialsList from '../screens/CredentialsList';
 
 const Tab = createBottomTabNavigator();
 
@@ -15,14 +14,9 @@ const MainStack = () => {
 
     const routes = {
         HomeTab: {
-            iconName: 'home',
+            iconName: 'collections-bookmark',
             component: <HomeStack />,
             title: 'AT Wallet',
-        },
-        Credentials: {
-            iconName: 'collections-bookmark',
-            component: <CredentialsList />,
-            title: 'Credentials',
         },
     };
     const routeKeys = Object.keys(routes);
