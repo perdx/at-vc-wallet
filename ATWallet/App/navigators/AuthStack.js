@@ -12,7 +12,6 @@ import Terms from '../screens/Terms';
 const Stack = createStackNavigator();
 
 const AuthStack = (props) => {
-    const { setAuth } = props;
     const [firstSignIn, setFirstSignIn] = useState(true);
 
     useEffect(() => {
@@ -44,11 +43,11 @@ const AuthStack = (props) => {
             {firstSignIn ? (
                 <Stack.Group>
                     <Stack.Screen name="Terms & Conditions" component={Terms} options={{ title: 'Terms & Conditions' }} />
-                    <Stack.Screen name="Create PIN" component={PinCreate} initialParams={{ setAuth }} options={{ title: 'Create PIN' }} />
+                    <Stack.Screen name="Create PIN" component={PinCreate} options={{ title: 'Create PIN' }} />
                 </Stack.Group>
             ) : (
                 <Stack.Group>
-                    <Stack.Screen name="Enter PIN" component={PinEnter} initialParams={{ setAuth }} options={{ title: 'Enter PIN' }} />
+                    <Stack.Screen name="Enter PIN" component={PinEnter} options={{ title: 'Enter PIN' }} />
                 </Stack.Group>
             )}
         </Stack.Navigator>

@@ -2,12 +2,13 @@
 import React from 'react';
 
 import RootStack from './App/navigators/RootStack';
-
-// TODO: Use react-navigation, set up navigators
+import AuthProvider from './App/providers/AuthProvider';
 
 const App = () => {
   return (
-    <RootStack />
+    <AuthProvider>
+      <RootStack />
+    </AuthProvider>
   );
 };
 

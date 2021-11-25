@@ -4,6 +4,7 @@ import * as Keychain from 'react-native-keychain';
 import { Button, TextInput } from 'react-native-paper';
 
 import SafeAreaScrollView from '../components/views/SafeAreaScrollView';
+import { useAuth } from '../providers/AuthProvider';
 
 // TODO: (Short term) Make this more PIN-like with separate inputs for each digit.
 // TODO: Augment with native phone auth like fingerprint or face recognition.
@@ -11,7 +12,7 @@ import SafeAreaScrollView from '../components/views/SafeAreaScrollView';
 const nDigits = 4; // Demo only. Should realy be 6.
 
 const PinCreate = props => {
-    const { route } = props;
+    const auth = useAuth();
     const [pin, setPin] = useState('');
     const [pin2, setPin2] = useState('');
 
@@ -28,7 +29,7 @@ const PinCreate = props => {
             Alert.alert('PINs do not match');
         } else {
             createPasscode(p1);
-            route.params.setAuth(true);
+            auth.setAuth(true);
         }
     };
 

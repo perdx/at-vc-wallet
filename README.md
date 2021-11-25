@@ -21,6 +21,11 @@ See https://reactnative.dev/docs/environment-setup, using the React Native CLI o
 4. Install iOS simulator in Xcode: Xcode -> Preferences -> Components.
 5. Install CocoaPods dependency manager for Swift: `sudo gem install cocoapods`
 
+### Project Directory ###
+
+**Important Note**
+Mobile app names must be in medial capitals (camel case with first letter capitalised). This does not match our github repo naming convention so the repository root is an empty wrapper. The essential source code is in the ATWallet directory. Make sure to `cd ATWallet` for working with npm/npx.
+
 ### Dependencies ###
 
 ```
@@ -29,6 +34,12 @@ npm install
 cd ios
 pod install
 ```
+
+### Environment Variables ###
+
+Mobile apps do not have a reliable access to system environment variables. For environment-specific configurations we use [react-native-config](https://github.com/luggit/react-native-config).
+
+.env files should never contain sensitive keys and should not be checked in to github. Check with the team to get an up-to-date starting .env file for local development.
 
 ### Run IOS Simulator ###
 
@@ -53,6 +64,10 @@ Try to avoid using local component styles as much as possible. Instead override 
 ## Navigation ##
 
 [React Navigation](https://reactnavigation.org/docs/getting-started) provides routing.
+
+## Onboarding API ##
+
+Mock APIs are being developed in the demo [issuer/verifier service](https://github.com/perdx/at-vc-app) which should be maintained alongside this app. See the README in that repo for running the back-end locally. 
 
 ## Developer Tips ##
 

@@ -2,8 +2,8 @@ import React from 'react';
 
 import { StyleSheet } from 'react-native';
 import { Button, Text, Title } from 'react-native-paper';
-import StdView from '../components/views/StdView';
-import ATLogo from '../../assets/ATLogo';
+import StdView from '../../components/views/StdView';
+import ATLogo from '../../../assets/ATLogo';
 
 const Welcome = (props) => {
     const { navigation } = props;
