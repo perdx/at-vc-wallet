@@ -1,81 +1,175 @@
-import React, { createContext, useCallback, useContext, useEffect, useState } from 'react';
+import React, { createContext, useCallback, useContext, useEffect, useReducer } from 'react';
 
 import base64 from 'base-64';
 import Config from 'react-native-config';
 import * as Keychain from 'react-native-keychain';
+import 'react-native-get-random-values'; // Needed for uuid (https://github.com/uuidjs/uuid#getrandomvalues-not-supported)
+import { v1 as uuidv1 } from 'uuid';
 
 const OnboardContext = createContext(undefined);
+
+const reducer = (state, action) => {
+    switch (action.type) {
+        case 'init': {
+            return {
+                ...state,
+                loading: true,
+                error: null,
+            };
+        }
+        case 'loaded': {
+            const { id, password } = action.payload;
+            return {
+                ...state,
+                id,
+                password,
+                loading: false,
+                error: null,
+            };
+        }
+        case 'statusChecked': {
+            const { status, message } = action.payload;
+            return {
+                ...state,
+                status,
+                message,
+                loading: false,
+                error: null,
+            };
+        }
+        case 'created': {
+            const { id, password, status, data, message } = action.payload;
+            return {
+                ...state,
+                id,
+                password,
+                status,
+                message,
+                loading: false,
+                error: null,
+                data,
+            };
+        }
+        case 'error': {
+            return {
+                ...state,
+                loading: false,
+                error: action.payload.error,
+            };
+        }
+        default:
+            throw new Error(`Unsupported action type dispatched to OnboardProvider reducer: ${action.type}`);
+    }
+};
 
 export const useOnboard = () => {
     const context = useContext(OnboardContext);
     if (!context) {
         throw new Error('useOnboard must be used within an OnboardProvider');
     }
-    return context;
+    const { state, dispatch } = context;
+
+    // Send onboard request to API
+    const create = async (data) => {
+        dispatch({ type: 'init' });
+
+        // Generate a uuid as a 'password' and store in keychain
+        // (Use v1 so that if we need to we can infer issues with multiple requests from a single device)
+        const password = uuidv1();
+
+        const uri = Config.API_HOST + '/register';
+        const body = { password, ...data };
+        try {
+            const res = await fetch(uri, { method: 'POST', body: JSON.stringify(body) });
+            if (res.status !== 200) {
+                console.error('HTTP Status: ' + res.status);
+                dispatch({ type: 'error', payload: { error: 'API response status not OK' } });
+            }
+            const resData = await res.json();
+            dispatch({
+                type: 'created',
+                payload: { id: resData.id, password, status: resData.status, data, message: resData.message },
+            });
+            const p = JSON.stringify({ id: resData.id, password });
+            await Keychain.setGenericPassword('onboard request token', p, { service: 'onboard' });
+        } catch (e) {
+            console.error(e);
+            dispatch({ type: 'error', payload: { error: 'Exception in create onboard API call' } });
+        }
+    };
+
+    return { state, create };
 };
 
 const OnboardProvider = (props) => {
-    const [state, setState] = useState({
-        requestID: null,
+    const initState = {
+        id: null,
         password: '',
         status: '',
         message: '',
         loading: true,
         error: null,
-    });
+        data: {
+            givenName: '',
+            familyName: '',
+        },
+    };
+
+    const [state, dispatch] = useReducer(reducer, initState);
 
     useEffect(() => {
         const fetchData = async () => {
             await load();
             await checkStatus();
-            setState(s => ({ ...s, loading: false }));
         };
         fetchData();
     }, [checkStatus]);
 
     // Retrieve credential ID from local keychain storage
     const load = async () => {
+        dispatch({ type: 'init' });
         const kcEntry = await Keychain.getGenericPassword({ service: 'onboard' });
         let data = { id: null, password: '' };
         if (kcEntry) {
             data = JSON.parse(kcEntry.password);
         }
-        setState(s => ({ ...s, requestID: data.id, password: data.password }));
+        dispatch({ type: 'loaded', payload: data });
     };
 
     // Check the onboarding status from the API
     const checkStatus = useCallback(async () => {
-        if (!state.requestID || state.password === '') {
+        if (!state.id || state.password === '') {
             return;
         }
 
-        let uri = Config.API_HOST + '/register/' + state.requestID;
+        dispatch({ type: 'init' });
+        let uri = Config.API_HOST + '/register/status';
 
-        // For demo purposes only, send the status you want reflected back
+        // For demo purposes only, send the status you want reflected back. Leave blank for demo default.
         uri += '?status=' + Config.ONBOARD_STATUS;
 
         const hdr = new Headers();
         // TODO: Review this basic auth.
         // (For now, sending ID in URL and header is deliberate if inelegant - allows consistency with Postman testing)
-        hdr.append('Authorization', 'Basic ' + base64.encode(state.requestID + ':' + state.password));
+        hdr.append('Authorization', 'Basic ' + base64.encode(state.id + ':' + state.password));
 
         try {
+            console.log('fetching:', uri, ' password:', state.password, ' id:', state.id);
             const res = await fetch(uri);
-            const httpStatus = res.status;
-            if (httpStatus !== 200) {
-                console.error('HTTP Status: ' + httpStatus);
-                setState(s => ({ ...s, error: 'API response status not OK' }));
+            if (res.status !== 200) {
+                console.error('HTTP Status: ' + res.status);
+                dispatch({ type: 'error', payload: { error: 'API response status not OK' } });
             }
             const data = await res.json();
-            setState(s => ({ ...s, status: data.status, message: data.message }));
+            dispatch({ type: 'statusChecked', payload: data });
         } catch (e) {
             console.error(e);
-            setState(s => ({ ...s, error: 'Exception in checkStatus API call' }));
+            dispatch({ type: 'error', payload: { error: 'Exception in checkStatus API call' } });
         }
-    }, [state.requestID, state.password]);
+    }, [state.id, state.password]);
 
     return (
-        <OnboardContext.Provider value={state}>
+        <OnboardContext.Provider value={{ state, dispatch }}>
             {props.children}
         </OnboardContext.Provider>
     );

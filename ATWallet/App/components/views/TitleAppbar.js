@@ -8,7 +8,7 @@ const TitleAppbar = (props) => {
 
     return (
         <Appbar.Header style={styles.header}>
-            {back ? <Appbar.BackAction onPress={navigation.goBack} /> : null}
+            {(back && !options.preventBack) ? <Appbar.BackAction onPress={navigation.goBack} /> : null}
             <Appbar.Content title={options.title} />
         </Appbar.Header>
     );

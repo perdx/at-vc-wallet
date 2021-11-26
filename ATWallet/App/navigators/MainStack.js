@@ -5,7 +5,6 @@ import { useTheme } from 'react-native-paper';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
 import CredentialStack from './CredentialStack';
-import TitleAppbar from '../components/views/TitleAppbar';
 import CredentialProvider from '../providers/CredentialProvider';
 
 const Tab = createBottomTabNavigator();
@@ -25,9 +24,8 @@ const MainStack = () => {
     return (
         <CredentialProvider>
             <Tab.Navigator
-                initialRouteName="HomeTab"
                 screenOptions={({ route }) => ({
-                    header: (props) => <TitleAppbar {...props} />,
+                    headerShown: false,
                     tabBarIcon: ({ focused }) => <Icon
                         name={routes[route.name].iconName}
                         size={32}
@@ -41,10 +39,7 @@ const MainStack = () => {
                     <Tab.Screen
                         key={k}
                         name={k}
-                        options={{
-                            title: routes[k].title,
-                            tabBarLabel: routes[k].title,
-                        }}>
+                        options={{ tabBarLabel: routes[k].title }}>
                         {() => routes[k].component}
                     </Tab.Screen>
                 )}

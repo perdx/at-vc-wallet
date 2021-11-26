@@ -3,6 +3,7 @@ import { Alert, Keyboard, StyleSheet, View } from 'react-native';
 import * as Keychain from 'react-native-keychain';
 import { Button, TextInput } from 'react-native-paper';
 
+import { formStyles } from '../components/formStyles';
 import SafeAreaScrollView from '../components/views/SafeAreaScrollView';
 import { useAuth } from '../providers/AuthProvider';
 
@@ -19,7 +20,7 @@ const PinCreate = props => {
     const createPasscode = async (p) => {
         const passcode = JSON.stringify(p);
         const description = 'user authentication pin';
-        await Keychain.setGenericPassword(description, passcode, { service: 'passcode' });
+        await Keychain.setGenericPassword(description, passcode, { service: 'pin' });
     };
 
     const confirmEntry = (p1, p2) => {
@@ -84,18 +85,4 @@ const PinCreate = props => {
 
 export default PinCreate;
 
-const styles = StyleSheet.create({
-    row: {
-        display: 'flex',
-        flexDirection: 'row',
-        justifyContent: 'center',
-        alignSelf: 'stretch',
-    },
-    input: {
-        width: 200,
-        marginTop: 24,
-    },
-    button: {
-        marginTop: 16,
-    },
-});
+const styles = StyleSheet.create({ ...formStyles(200) });

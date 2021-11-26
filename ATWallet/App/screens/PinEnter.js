@@ -4,6 +4,7 @@ import { Alert, Keyboard, StyleSheet, View } from 'react-native';
 import * as Keychain from 'react-native-keychain';
 import { Button, TextInput } from 'react-native-paper';
 
+import { formStyles } from '../components/formStyles';
 import SafeAreaScrollView from '../components/views/SafeAreaScrollView';
 import { useAuth } from '../providers/AuthProvider';
 
@@ -60,18 +61,4 @@ const PinEnter = props => {
 
 export default PinEnter;
 
-const styles = StyleSheet.create({
-    row: {
-        display: 'flex',
-        flexDirection: 'row',
-        justifyContent: 'center',
-        alignSelf: 'stretch',
-    },
-    input: {
-        width: 200,
-        marginTop: 24,
-    },
-    button: {
-        marginTop: 24,
-    },
-});
+const styles = StyleSheet.create({ ...formStyles(200) });

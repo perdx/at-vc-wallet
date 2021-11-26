@@ -3,6 +3,7 @@ import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 
 import OnboardStack from './OnboardStack';
+import TitleAppbar from '../components/views/TitleAppbar';
 import { useCredentials } from '../providers/CredentialProvider';
 import OnboardProvider from '../providers/OnboardProvider';
 import CredentialList from '../screens/CredentialList';
@@ -22,9 +23,13 @@ const CredentialStack = () => {
 
     return (
         <OnboardProvider>
-            <Stack.Navigator screenOptions={{ headerShown: false }}>
+            <Stack.Navigator
+                screenOptions={
+                    hasCredentials ? ({ header: (props) => <TitleAppbar {...props} /> }) : ({ headerShown: false })
+                }
+            >
                 {hasCredentials ? (
-                    <Stack.Screen name="CredentialList" component={CredentialList} />
+                    <Stack.Screen name="CredentialList" component={CredentialList} options={{ title: 'AT Wallet' }} />
                 ) : (
                     <Stack.Screen name="Onboard" component={OnboardStack} />
                 )}
