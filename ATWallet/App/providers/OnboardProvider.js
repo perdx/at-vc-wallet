@@ -120,13 +120,13 @@ const OnboardProvider = (props) => {
     useEffect(() => {
         const fetchData = async () => {
             await load();
-            await checkStatus();
         };
         fetchData();
-    }, [checkStatus]);
+    }, [load]);
 
     // Retrieve credential ID from local keychain storage
-    const load = async () => {
+    const load = useCallback(async () => {
+        console.log('Loading from keychain store');
         dispatch({ type: 'init' });
         const kcEntry = await Keychain.getGenericPassword({ service: 'onboard' });
         let data = { id: null, password: '' };
@@ -134,14 +134,17 @@ const OnboardProvider = (props) => {
             data = JSON.parse(kcEntry.password);
         }
         dispatch({ type: 'loaded', payload: data });
-    };
+        if (data.id !== null) {
+            await checkStatus(data.id, data.password);
+        }
+    }, [checkStatus]);
 
     // Check the onboarding status from the API
-    const checkStatus = useCallback(async () => {
-        if (!state.id || state.password === '') {
+    const checkStatus = useCallback(async (id, password) => {
+        console.log('Calling API for status with id=', id, 'password=', password);
+        if (id === null || password === '') {
             return;
         }
-
         dispatch({ type: 'init' });
         let uri = Config.API_HOST + '/register/status';
 
@@ -150,12 +153,11 @@ const OnboardProvider = (props) => {
 
         const hdr = new Headers();
         // TODO: Review this basic auth.
-        // (For now, sending ID in URL and header is deliberate if inelegant - allows consistency with Postman testing)
-        hdr.append('Authorization', 'Basic ' + base64.encode(state.id + ':' + state.password));
+        hdr.append('Authorization', 'Basic ' + base64.encode(id + ':' + password));
 
         try {
-            console.log('fetching:', uri, ' password:', state.password, ' id:', state.id);
-            const res = await fetch(uri);
+            console.log('fetching:', uri, ' password:', password, ' id:', id);
+            const res = await fetch(uri, { headers: hdr });
             if (res.status !== 200) {
                 console.error('HTTP Status: ' + res.status);
                 dispatch({ type: 'error', payload: { error: 'API response status not OK' } });
@@ -166,7 +168,7 @@ const OnboardProvider = (props) => {
             console.error(e);
             dispatch({ type: 'error', payload: { error: 'Exception in checkStatus API call' } });
         }
-    }, [state.id, state.password]);
+    }, []);
 
     return (
         <OnboardContext.Provider value={{ state, dispatch }}>

@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 
 import { createStackNavigator } from '@react-navigation/stack';
 
 import TitleAppbar from '../components/views/TitleAppbar';
+import Loading from '../screens/Onboard/Loading';
 import Name from '../screens/Onboard/Name';
 import Rejected from '../screens/Onboard/Rejected';
 import Status from '../screens/Onboard/Status';
@@ -15,25 +16,30 @@ const Stack = createStackNavigator();
 // Rejected onboard request - load Rejected screen
 // otherwise pending - load Status screen
 
-const OnboardStack = () => {
+const OnboardStack = (props) => {
+    const { navigation } = props;
     const onboard = useOnboard();
     console.log('onboard.state:', onboard.state);
-    const [mode, setMode] = useState('create');
 
     useEffect(() => {
+        if (onboard.state.id === null && onboard.state.loading) {
+            navigation.navigate('Loading');
+            return;
+        }
         if (onboard.state.id === null) {
-            setMode('Welcome');
+            navigation.navigate('Welcome');
             return;
         }
         if (onboard.state.status === 'declined') {
-            setMode('OnboardRejected');
+            navigation.navigate('OnboardRejected');
             return;
         }
-        setMode('OnboardStatus');
-    }, [onboard.state]);
+        navigation.navigate('OnboardStatus');
+    }, [onboard.state, navigation]);
 
     return (
-        <Stack.Navigator initialRouteName={mode} screenOptions={{ header: (props) => <TitleAppbar {...props} /> }}>
+        <Stack.Navigator screenOptions={{ header: (headerProps) => <TitleAppbar {...headerProps} /> }}>
+            <Stack.Screen name="Loading" component={Loading} options={{ title: 'Please wait...' }} />
             <Stack.Screen name="Welcome" component={Welcome} options={{ title: 'Welcome' }} />
             <Stack.Screen name="OnboardName" component={Name} options={{ title: 'Your Name' }} />
             <Stack.Screen name="OnboardStatus" component={Status} options={{ title: 'Pending Requests', preventBack: true }} />

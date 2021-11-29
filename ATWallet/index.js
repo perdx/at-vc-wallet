@@ -3,7 +3,7 @@
  */
 
 import React from 'react';
-import { AppRegistry } from 'react-native';
+import { AppRegistry, LogBox } from 'react-native';
 import { Provider as PaperProvider } from 'react-native-paper';
 import { NavigationContainer } from '@react-navigation/native';
 
@@ -20,5 +20,8 @@ const Main = () => {
         </PaperProvider>
     );
 };
+
+// Ignore fetch require loop warning https://github.com/facebook/metro/issues/287
+LogBox.ignoreLogs(['Require cycle:']);
 
 AppRegistry.registerComponent(appName, () => Main);
