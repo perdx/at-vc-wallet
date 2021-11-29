@@ -1,4 +1,4 @@
-import React, { createContext, useCallback, useContext, useEffect, useReducer } from 'react';
+import React, { createContext, useContext, useReducer } from 'react';
 
 import base64 from 'base-64';
 import Config from 'react-native-config';
@@ -21,6 +21,7 @@ const reducer = (state, action) => {
             const { id, password } = action.payload;
             return {
                 ...state,
+                startup: false,
                 id,
                 password,
                 loading: false,
@@ -98,65 +99,28 @@ export const useOnboard = () => {
         }
     };
 
-    return { state, create };
-};
-
-const OnboardProvider = (props) => {
-    const initState = {
-        id: null,
-        password: '',
-        status: '',
-        message: '',
-        loading: true,
-        error: null,
-        data: {
-            givenName: '',
-            familyName: '',
-        },
-    };
-
-    const [state, dispatch] = useReducer(reducer, initState);
-
-    useEffect(() => {
-        const fetchData = async () => {
-            await load();
-        };
-        fetchData();
-    }, [load]);
-
-    // Retrieve credential ID from local keychain storage
-    const load = useCallback(async () => {
-        console.log('Loading from keychain store');
+    // Check the onboarding status from the API
+    const check = async () => {
         dispatch({ type: 'init' });
         const kcEntry = await Keychain.getGenericPassword({ service: 'onboard' });
-        let data = { id: null, password: '' };
+        let kc = { id: null, password: '' };
         if (kcEntry) {
-            data = JSON.parse(kcEntry.password);
+            kc = JSON.parse(kcEntry.password);
         }
-        dispatch({ type: 'loaded', payload: data });
-        if (data.id !== null) {
-            await checkStatus(data.id, data.password);
-        }
-    }, [checkStatus]);
-
-    // Check the onboarding status from the API
-    const checkStatus = useCallback(async (id, password) => {
-        console.log('Calling API for status with id=', id, 'password=', password);
-        if (id === null || password === '') {
+        dispatch({ type: 'loaded', payload: kc });
+        if (kc.id === null || kc.password === '') {
             return;
         }
-        dispatch({ type: 'init' });
-        let uri = Config.API_HOST + '/register/status';
 
+        let uri = Config.API_HOST + '/register/status';
         // For demo purposes only, send the status you want reflected back. Leave blank for demo default.
         uri += '?status=' + Config.ONBOARD_STATUS;
 
         const hdr = new Headers();
         // TODO: Review this basic auth.
-        hdr.append('Authorization', 'Basic ' + base64.encode(id + ':' + password));
+        hdr.append('Authorization', 'Basic ' + base64.encode(kc.id + ':' + kc.password));
 
         try {
-            console.log('fetching:', uri, ' password:', password, ' id:', id);
             const res = await fetch(uri, { headers: hdr });
             if (res.status !== 200) {
                 console.error('HTTP Status: ' + res.status);
@@ -168,7 +132,27 @@ const OnboardProvider = (props) => {
             console.error(e);
             dispatch({ type: 'error', payload: { error: 'Exception in checkStatus API call' } });
         }
-    }, []);
+    };
+
+    return { state, check, create };
+};
+
+const OnboardProvider = (props) => {
+    const initState = {
+        startup: true,
+        id: null,
+        password: '',
+        status: '',
+        message: '',
+        loading: false,
+        error: null,
+        data: {
+            givenName: '',
+            familyName: '',
+        },
+    };
+
+    const [state, dispatch] = useReducer(reducer, initState);
 
     return (
         <OnboardContext.Provider value={{ state, dispatch }}>

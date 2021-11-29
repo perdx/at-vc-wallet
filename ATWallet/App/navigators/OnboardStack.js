@@ -18,24 +18,30 @@ const Stack = createStackNavigator();
 
 const OnboardStack = (props) => {
     const { navigation } = props;
-    const onboard = useOnboard();
-    console.log('onboard.state:', onboard.state);
+    const { state, check } = useOnboard();
 
     useEffect(() => {
-        if (onboard.state.id === null && onboard.state.loading) {
+        if (state.startup && !state.loading) {
+            check();
+        }
+    }, [state.startup, state.loading, check]);
+
+    useEffect(() => {
+        console.log('onboard:', state);
+        if (state.id === null && state.loading) {
             navigation.navigate('Loading');
             return;
         }
-        if (onboard.state.id === null) {
+        if (state.id === null) {
             navigation.navigate('Welcome');
             return;
         }
-        if (onboard.state.status === 'declined') {
+        if (state.status === 'declined') {
             navigation.navigate('OnboardRejected');
             return;
         }
         navigation.navigate('OnboardStatus');
-    }, [onboard.state, navigation]);
+    }, [state, navigation]);
 
     return (
         <Stack.Navigator screenOptions={{ header: (headerProps) => <TitleAppbar {...headerProps} /> }}>
