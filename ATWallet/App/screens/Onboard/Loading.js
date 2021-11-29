@@ -1,11 +1,16 @@
 import React from 'react';
 
-import { Text, View } from 'react-native';
+import { ActivityIndicator, useTheme } from 'react-native-paper';
+
+import StdView from '../../components/views/StdView';
 
 const Loading = (props) => {
+    const { colors } = useTheme();
 
     return (
-        <View><Text>Loading</Text></View>
+        <StdView>
+            <ActivityIndicator animating={true} color={colors.accent} />
+        </StdView>
     );
 };
 

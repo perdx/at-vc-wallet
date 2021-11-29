@@ -58,6 +58,13 @@ const reducer = (state, action) => {
                 error: action.payload.error,
             };
         }
+        case 'reset': {
+            return {
+                ...state,
+                loading: false,
+                error: '',
+            };
+        }
         default:
             throw new Error(`Unsupported action type dispatched to OnboardProvider reducer: ${action.type}`);
     }
@@ -134,7 +141,12 @@ export const useOnboard = () => {
         }
     };
 
-    return { state, check, create };
+    // Reset the state ready for another check (usually following an error)
+    const reset = () => {
+        dispatch({ type: 'reset' });
+    };
+
+    return { state, check, create, reset };
 };
 
 const OnboardProvider = (props) => {

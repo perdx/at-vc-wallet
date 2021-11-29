@@ -3,6 +3,7 @@ import React, { useEffect } from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 
 import TitleAppbar from '../components/views/TitleAppbar';
+import Error from '../screens/Onboard/Error';
 import Loading from '../screens/Onboard/Loading';
 import Name from '../screens/Onboard/Name';
 import Rejected from '../screens/Onboard/Rejected';
@@ -28,9 +29,13 @@ const OnboardStack = (props) => {
 
     useEffect(() => {
         console.log('onboard:', state);
-        if (state.id === null && state.loading) {
-            navigation.navigate('Loading');
+        if (state.loading) {
+            navigation.navigate('OnboardLoading');
             return;
+        }
+        if (state.error !== '') {
+            navigation.navigate('OnboardError');
+            return
         }
         if (state.id === null) {
             navigation.navigate('Welcome');
@@ -45,7 +50,8 @@ const OnboardStack = (props) => {
 
     return (
         <Stack.Navigator screenOptions={{ header: (headerProps) => <TitleAppbar {...headerProps} /> }}>
-            <Stack.Screen name="Loading" component={Loading} options={{ title: 'Please wait...' }} />
+            <Stack.Screen name="OnboardLoading" component={Loading} options={{ title: 'Please wait...', preventBack: true }} />
+            <Stack.Screen name="OnboardError" component={Error} options={{ title: 'Check Problem', preventBack: true }} />
             <Stack.Screen name="Welcome" component={Welcome} options={{ title: 'Welcome' }} />
             <Stack.Screen name="OnboardName" component={Name} options={{ title: 'Your Name' }} />
             <Stack.Screen name="OnboardStatus" component={Status} options={{ title: 'Pending Requests', preventBack: true }} />
