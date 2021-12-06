@@ -33,9 +33,9 @@ const OnboardStack = (props) => {
             navigation.navigate('OnboardLoading');
             return;
         }
-        if (state.error !== '') {
+        if (state.error !== null) {
             navigation.navigate('OnboardError');
-            return
+            return;
         }
         if (state.id === null) {
             navigation.navigate('Welcome');
@@ -51,7 +51,7 @@ const OnboardStack = (props) => {
     return (
         <Stack.Navigator screenOptions={{ header: (headerProps) => <TitleAppbar {...headerProps} /> }}>
             <Stack.Screen name="OnboardLoading" component={Loading} options={{ title: 'Please wait...', preventBack: true }} />
-            <Stack.Screen name="OnboardError" component={Error} options={{ title: 'Check Problem', preventBack: true }} />
+            <Stack.Screen name="OnboardError" component={Error} options={{ title: 'Oops!', preventBack: true }} />
             <Stack.Screen name="Welcome" component={Welcome} options={{ title: 'Welcome' }} />
             <Stack.Screen name="OnboardName" component={Name} options={{ title: 'Your Name' }} />
             <Stack.Screen name="OnboardStatus" component={Status} options={{ title: 'Pending Requests', preventBack: true }} />

@@ -62,7 +62,7 @@ const reducer = (state, action) => {
             return {
                 ...state,
                 loading: false,
-                error: '',
+                error: null,
             };
         }
         default:
@@ -121,7 +121,9 @@ export const useOnboard = () => {
 
         let uri = Config.API_HOST + '/register/status';
         // For demo purposes only, send the status you want reflected back. Leave blank for demo default.
-        uri += '?status=' + Config.ONBOARD_STATUS;
+        if (Config.ONBOARD_STATUS) {
+            uri += '?status=' + Config.ONBOARD_STATUS;
+        }
 
         const hdr = new Headers();
         // TODO: Review this basic auth.
