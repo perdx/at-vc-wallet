@@ -15,6 +15,7 @@ const Stack = createStackNavigator();
 const CredentialStack = () => {
     const navigation = useNavigation();
     const { state, getVC, issuanceState, load } = useCredentials();
+    const statusRef = useRef(state.issuanceStatus);
 
     // Navigation effect
     useEffect(() => {

@@ -132,26 +132,34 @@ export const useCredentials = () => {
 
         dispatch({ type: 'init' }); // TODO: Is this needed?
         const uri = `${Config.API_HOST}/issuer/status/${state.issuance.state}`;
-        console.log(uri);
-        try {
-            const res = await fetch(uri, { method: 'GET' });
-            if (res.status !== 200) {
-                console.error('HTTP Status: ' + res.status);
-                dispatch({ type: 'issuanceFailed', payload: { error: 'API response status not OK' } });
-                return;
+
+        const callAPI = async () => {
+            try {
+                const res = await fetch(uri, { method: 'GET' });
+                if (res.status !== 200) {
+                    console.error('HTTP Status: ' + res.status);
+                    dispatch({ type: 'issuanceFailed', payload: { error: 'API response status not OK' } });
+                    return;
+                }
+                const resData = await res.json();
+                console.log(resData);
+                if (resData.status === 'issuance_error') {
+                    console.log(resData.message);
+                    dispatch({ type: 'issuanceFailed', payload: { error: resData.message } });
+                } else {
+                    dispatch({ type: 'issuanceStateChecked', payload: { ...resData } });
+                    if (resData.status !== 'awaiting_issuance') {
+                        setTimeout(callAPI, 5000);
+                    }
+                }
+            } catch (e) {
+                console.error(e);
+                dispatch({ type: 'issuanceFailed', payload: { error: 'Exception in issuance status check API call' } });
             }
-            const resData = await res.json();
-            console.log(resData);
-            if (resData.status === 'issuance_error') {
-                console.log(resData.message);
-                dispatch({ type: 'issuanceFailed', payload: { error: resData.message } });
-            } else {
-                dispatch({ type: 'issuanceStateChecked', payload: { ...resData } });
-            }
-        } catch (e) {
-            console.error(e);
-            dispatch({ type: 'issuanceFailed', payload: { error: 'Exception in issuance status check API call' } });
-        }
+        };
+
+        callAPI();
+
     }, [state.issuance, dispatch]);
 
     const getVC = useCallback(async (vcuri) => {
