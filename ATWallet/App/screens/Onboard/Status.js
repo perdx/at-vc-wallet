@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 
 import { StyleSheet } from 'react-native';
 import { Button, Text } from 'react-native-paper';
@@ -6,12 +6,16 @@ import { Button, Text } from 'react-native-paper';
 import StdView from '../../components/views/StdView';
 import ATLogo from '../../../assets/ATLogo';
 import { useOnboard } from '../../providers/OnboardProvider';
+import { useCredentials } from '../../providers/CredentialProvider';
 
 const Status = (props) => {
+    const { navigation } = props;
     const { state, check } = useOnboard();
+    const { issuance } = useCredentials();
 
-    const handleGetVC = () => {
-
+    const handleGetVC = async () => {
+        await issuance();
+        navigation.navigate('CredentialList');
     };
 
     return (

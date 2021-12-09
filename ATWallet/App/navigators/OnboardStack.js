@@ -1,10 +1,11 @@
 import React, { useEffect } from 'react';
 
+import { useNavigation } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
 import TitleAppbar from '../components/views/TitleAppbar';
+import Loading from '../screens/Loading';
 import Error from '../screens/Onboard/Error';
-import Loading from '../screens/Onboard/Loading';
 import Name from '../screens/Onboard/Name';
 import Rejected from '../screens/Onboard/Rejected';
 import Status from '../screens/Onboard/Status';
@@ -18,7 +19,7 @@ const Stack = createStackNavigator();
 // otherwise pending - load Status screen
 
 const OnboardStack = (props) => {
-    const { navigation } = props;
+    const navigation = useNavigation();
     const { state, check } = useOnboard();
 
     useEffect(() => {
@@ -28,7 +29,7 @@ const OnboardStack = (props) => {
     }, [state.startup, state.loading, check]);
 
     useEffect(() => {
-        console.log('onboard:', state);
+        console.log('onboard state:', state);
         if (state.loading) {
             navigation.navigate('OnboardLoading');
             return;
