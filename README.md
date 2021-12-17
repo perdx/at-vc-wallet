@@ -39,6 +39,11 @@ pod install
 
 Mobile apps do not have a reliable access to system environment variables. For environment-specific configurations we use [react-native-config](https://github.com/luggit/react-native-config).
 
+If you change .env file entries only, it will not force a rebuild - only changes to the .js files that use the .env entries will do that. This can cause some caching issues that can be resolved using
+[these nuclear options](https://medium.com/@abhisheknalwaya/how-to-clear-react-native-cache-c435c258834e).
+
+TODO: Evaluate an alternative to react-native-config - [ideas](https://stackoverflow.com/questions/33117227/setting-environment-variable-in-react-native)
+
 .env files should never contain sensitive keys and should not be checked in to github. Check with the team to get an up-to-date starting .env file for local development.
 
 ### Run IOS Simulator ###

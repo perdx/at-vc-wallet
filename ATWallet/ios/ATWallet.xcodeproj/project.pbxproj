@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 54;
+	objectVersion = 55;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -11,9 +11,9 @@
 		13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
-		45D4541EC4E464E9FF839F05 /* libPods-ATWallet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 31D5D43B491910B6E4C2D4DA /* libPods-ATWallet.a */; };
+		234EC75D545FE93A1BD52408 /* libPods-ATWallet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A522E007C2A7DFB39BC0A3CB /* libPods-ATWallet.a */; };
+		397BB60B529F3790F8F54C50 /* libPods-ATWallet-ATWalletTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 472A300672E6DCAB2981426A /* libPods-ATWallet-ATWalletTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
-		9C26C102FF8CEF6912E2387B /* libPods-ATWallet-ATWalletTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 77FA07582C7DF513033676E9 /* libPods-ATWallet-ATWalletTests.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,13 +36,13 @@
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = ATWallet/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = ATWallet/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = ATWallet/main.m; sourceTree = "<group>"; };
-		31D5D43B491910B6E4C2D4DA /* libPods-ATWallet.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ATWallet.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		44003FA4E3C519732CE41895 /* Pods-ATWallet.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ATWallet.debug.xcconfig"; path = "Target Support Files/Pods-ATWallet/Pods-ATWallet.debug.xcconfig"; sourceTree = "<group>"; };
-		77FA07582C7DF513033676E9 /* libPods-ATWallet-ATWalletTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ATWallet-ATWalletTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		472A300672E6DCAB2981426A /* libPods-ATWallet-ATWalletTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ATWallet-ATWalletTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5C557065F5C81E2A78C30905 /* Pods-ATWallet.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ATWallet.debug.xcconfig"; path = "Target Support Files/Pods-ATWallet/Pods-ATWallet.debug.xcconfig"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = ATWallet/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		8A3E10D8F0C38DE6C0F7D098 /* Pods-ATWallet-ATWalletTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ATWallet-ATWalletTests.release.xcconfig"; path = "Target Support Files/Pods-ATWallet-ATWalletTests/Pods-ATWallet-ATWalletTests.release.xcconfig"; sourceTree = "<group>"; };
-		C7511EA20DF4B32AA734169B /* Pods-ATWallet-ATWalletTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ATWallet-ATWalletTests.debug.xcconfig"; path = "Target Support Files/Pods-ATWallet-ATWalletTests/Pods-ATWallet-ATWalletTests.debug.xcconfig"; sourceTree = "<group>"; };
-		CA8187913FEECE8F8B1B06D0 /* Pods-ATWallet.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ATWallet.release.xcconfig"; path = "Target Support Files/Pods-ATWallet/Pods-ATWallet.release.xcconfig"; sourceTree = "<group>"; };
+		A39F62C08335ADF638322849 /* Pods-ATWallet.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ATWallet.release.xcconfig"; path = "Target Support Files/Pods-ATWallet/Pods-ATWallet.release.xcconfig"; sourceTree = "<group>"; };
+		A522E007C2A7DFB39BC0A3CB /* libPods-ATWallet.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ATWallet.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CBA8B15BA037D150DB6683CD /* Pods-ATWallet-ATWalletTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ATWallet-ATWalletTests.debug.xcconfig"; path = "Target Support Files/Pods-ATWallet-ATWalletTests/Pods-ATWallet-ATWalletTests.debug.xcconfig"; sourceTree = "<group>"; };
+		CBF2FD16B3AB68E5AF7D36A3 /* Pods-ATWallet-ATWalletTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ATWallet-ATWalletTests.release.xcconfig"; path = "Target Support Files/Pods-ATWallet-ATWalletTests/Pods-ATWallet-ATWalletTests.release.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -51,7 +51,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9C26C102FF8CEF6912E2387B /* libPods-ATWallet-ATWalletTests.a in Frameworks */,
+				397BB60B529F3790F8F54C50 /* libPods-ATWallet-ATWalletTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -59,7 +59,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				45D4541EC4E464E9FF839F05 /* libPods-ATWallet.a in Frameworks */,
+				234EC75D545FE93A1BD52408 /* libPods-ATWallet.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -86,10 +86,10 @@
 		0E0585F4E179DB31FBE8E692 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				44003FA4E3C519732CE41895 /* Pods-ATWallet.debug.xcconfig */,
-				CA8187913FEECE8F8B1B06D0 /* Pods-ATWallet.release.xcconfig */,
-				C7511EA20DF4B32AA734169B /* Pods-ATWallet-ATWalletTests.debug.xcconfig */,
-				8A3E10D8F0C38DE6C0F7D098 /* Pods-ATWallet-ATWalletTests.release.xcconfig */,
+				5C557065F5C81E2A78C30905 /* Pods-ATWallet.debug.xcconfig */,
+				A39F62C08335ADF638322849 /* Pods-ATWallet.release.xcconfig */,
+				CBA8B15BA037D150DB6683CD /* Pods-ATWallet-ATWalletTests.debug.xcconfig */,
+				CBF2FD16B3AB68E5AF7D36A3 /* Pods-ATWallet-ATWalletTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -111,8 +111,8 @@
 			isa = PBXGroup;
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
-				31D5D43B491910B6E4C2D4DA /* libPods-ATWallet.a */,
-				77FA07582C7DF513033676E9 /* libPods-ATWallet-ATWalletTests.a */,
+				A522E007C2A7DFB39BC0A3CB /* libPods-ATWallet.a */,
+				472A300672E6DCAB2981426A /* libPods-ATWallet-ATWalletTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -163,12 +163,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "ATWalletTests" */;
 			buildPhases = (
-				4BE4627539420DF5D5703866 /* [CP] Check Pods Manifest.lock */,
+				713D67119A6E4CC7D4959620 /* [CP] Check Pods Manifest.lock */,
 				00E356EA1AD99517003FC87E /* Sources */,
 				00E356EB1AD99517003FC87E /* Frameworks */,
 				00E356EC1AD99517003FC87E /* Resources */,
-				672BFDD92C69FD87D7556513 /* [CP] Embed Pods Frameworks */,
-				56172246C4456779F16FF9EE /* [CP] Copy Pods Resources */,
+				398341C9A9F56923434023A5 /* [CP] Embed Pods Frameworks */,
+				1983B41AD2F08AADB93136D4 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -184,14 +184,14 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "ATWallet" */;
 			buildPhases = (
-				FC573A63FEED8A189DF702F7 /* [CP] Check Pods Manifest.lock */,
+				8659BEF07C0318D10D202326 /* [CP] Check Pods Manifest.lock */,
 				FD10A7F022414F080027D42C /* Start Packager */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
-				FD4ABE08497681503C743723 /* [CP] Embed Pods Frameworks */,
-				4785EEFF31D7C2208E39E202 /* [CP] Copy Pods Resources */,
+				9F6A61CCACCC6F527D6CFE20 /* [CP] Embed Pods Frameworks */,
+				A3D11ADE3D19B6B1988C12C5 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -208,7 +208,7 @@
 		83CBB9F71A601CBA00E9B192 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 1210;
+				LastUpgradeCheck = 1310;
 				TargetAttributes = {
 					00E356ED1AD99517003FC87E = {
 						CreatedOnToolsVersion = 6.2;
@@ -220,7 +220,7 @@
 				};
 			};
 			buildConfigurationList = 83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "ATWallet" */;
-			compatibilityVersion = "Xcode 12.0";
+			compatibilityVersion = "Xcode 13.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -272,24 +272,41 @@
 			shellPath = /bin/sh;
 			shellScript = "set -e\n\nexport NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh\n";
 		};
-		4785EEFF31D7C2208E39E202 /* [CP] Copy Pods Resources */ = {
+		1983B41AD2F08AADB93136D4 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-ATWallet/Pods-ATWallet-resources-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-ATWallet-ATWalletTests/Pods-ATWallet-ATWalletTests-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-ATWallet/Pods-ATWallet-resources-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-ATWallet-ATWalletTests/Pods-ATWallet-ATWalletTests-resources-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ATWallet/Pods-ATWallet-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ATWallet-ATWalletTests/Pods-ATWallet-ATWalletTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		4BE4627539420DF5D5703866 /* [CP] Check Pods Manifest.lock */ = {
+		398341C9A9F56923434023A5 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ATWallet-ATWalletTests/Pods-ATWallet-ATWalletTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ATWallet-ATWalletTests/Pods-ATWallet-ATWalletTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ATWallet-ATWalletTests/Pods-ATWallet-ATWalletTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		713D67119A6E4CC7D4959620 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -311,41 +328,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		56172246C4456779F16FF9EE /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-ATWallet-ATWalletTests/Pods-ATWallet-ATWalletTests-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-ATWallet-ATWalletTests/Pods-ATWallet-ATWalletTests-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ATWallet-ATWalletTests/Pods-ATWallet-ATWalletTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		672BFDD92C69FD87D7556513 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-ATWallet-ATWalletTests/Pods-ATWallet-ATWalletTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-ATWallet-ATWalletTests/Pods-ATWallet-ATWalletTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ATWallet-ATWalletTests/Pods-ATWallet-ATWalletTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		FC573A63FEED8A189DF702F7 /* [CP] Check Pods Manifest.lock */ = {
+		8659BEF07C0318D10D202326 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -367,6 +350,40 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		9F6A61CCACCC6F527D6CFE20 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ATWallet/Pods-ATWallet-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ATWallet/Pods-ATWallet-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ATWallet/Pods-ATWallet-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A3D11ADE3D19B6B1988C12C5 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ATWallet/Pods-ATWallet-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ATWallet/Pods-ATWallet-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ATWallet/Pods-ATWallet-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		FD10A7F022414F080027D42C /* Start Packager */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -384,23 +401,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "export RCT_METRO_PORT=\"${RCT_METRO_PORT:=8081}\"\necho \"export RCT_METRO_PORT=${RCT_METRO_PORT}\" > \"${SRCROOT}/../node_modules/react-native/scripts/.packager.env\"\nif [ -z \"${RCT_NO_LAUNCH_PACKAGER+xxx}\" ] ; then\n  if nc -w 5 -z localhost ${RCT_METRO_PORT} ; then\n    if ! curl -s \"http://localhost:${RCT_METRO_PORT}/status\" | grep -q \"packager-status:running\" ; then\n      echo \"Port ${RCT_METRO_PORT} already in use, packager is either not running or not running correctly\"\n      exit 2\n    fi\n  else\n    open \"$SRCROOT/../node_modules/react-native/scripts/launchPackager.command\" || echo \"Can't start packager automatically\"\n  fi\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		FD4ABE08497681503C743723 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-ATWallet/Pods-ATWallet-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-ATWallet/Pods-ATWallet-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ATWallet/Pods-ATWallet-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -436,15 +436,16 @@
 /* Begin XCBuildConfiguration section */
 		00E356F61AD99517003FC87E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C7511EA20DF4B32AA734169B /* Pods-ATWallet-ATWalletTests.debug.xcconfig */;
+			baseConfigurationReference = CBA8B15BA037D150DB6683CD /* Pods-ATWallet-ATWalletTests.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = ATWalletTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -463,12 +464,13 @@
 		};
 		00E356F71AD99517003FC87E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8A3E10D8F0C38DE6C0F7D098 /* Pods-ATWallet-ATWalletTests.release.xcconfig */;
+			baseConfigurationReference = CBF2FD16B3AB68E5AF7D36A3 /* Pods-ATWallet-ATWalletTests.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
 				INFOPLIST_FILE = ATWalletTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -487,14 +489,15 @@
 		};
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 44003FA4E3C519732CE41895 /* Pods-ATWallet.debug.xcconfig */;
+			baseConfigurationReference = 5C557065F5C81E2A78C30905 /* Pods-ATWallet.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = NO;
-				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
 				INFOPLIST_FILE = ATWallet/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -514,14 +517,15 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = CA8187913FEECE8F8B1B06D0 /* Pods-ATWallet.release.xcconfig */;
+			baseConfigurationReference = A39F62C08335ADF638322849 /* Pods-ATWallet.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
 				EXCLUDED_ARCHS = "";
-				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
 				INFOPLIST_FILE = ATWallet/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -571,7 +575,7 @@
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = "";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -587,7 +591,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					/usr/lib/swift,
 					"$(inherited)",
@@ -637,7 +641,7 @@
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = "";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -646,7 +650,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					/usr/lib/swift,
 					"$(inherited)",

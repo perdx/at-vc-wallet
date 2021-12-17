@@ -27,7 +27,7 @@ const Terms = props => {
                     <Button
                         mode="contained"
                         disabled={!checked}
-                        onPress={() => navigation.navigate('Create Pin')}
+                        onPress={() => navigation.navigate('Create PIN')}
                     >
                         OK
                     </Button>

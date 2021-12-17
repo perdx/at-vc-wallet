@@ -23,6 +23,7 @@ const Name = (props) => {
             return;
         }
         Keyboard.dismiss();
+        // TODO: Expand for whatever onboarding fields we need
         onboard.create({ givenName: givenName.trim(), familyName: familyName.trim() });
         navigation.navigate('OnboardStatus');
     };

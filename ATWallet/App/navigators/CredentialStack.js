@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect } from 'react';
 
 import { useNavigation } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -15,7 +15,6 @@ const Stack = createStackNavigator();
 const CredentialStack = () => {
     const navigation = useNavigation();
     const { state, getVC, issuanceState, load } = useCredentials();
-    const statusRef = useRef(state.issuanceStatus);
 
     // Navigation effect
     useEffect(() => {

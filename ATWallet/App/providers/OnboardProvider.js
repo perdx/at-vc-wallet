@@ -90,8 +90,11 @@ export const useOnboard = () => {
         try {
             const res = await fetch(uri, { method: 'POST', body: JSON.stringify(body) });
             if (res.status !== 200) {
+                console.error(uri);
                 console.error('HTTP Status: ' + res.status);
+                console.error(res.text());
                 dispatch({ type: 'error', payload: { error: 'API response status not OK' } });
+                return;
             }
             const resData = await res.json();
             dispatch({
@@ -132,8 +135,10 @@ export const useOnboard = () => {
         try {
             const res = await fetch(uri, { headers: hdr });
             if (res.status !== 200) {
-                console.error('HTTP Status: ' + res.status);
-                dispatch({ type: 'error', payload: { error: 'API response status not OK' } });
+                console.error(uri);
+                console.error('onboard status check HTTP Status: ' + res.status);
+                dispatch({ type: 'error', payload: { error: 'API response from onboard check status not OK' } });
+                return;
             }
             const data = await res.json();
             dispatch({ type: 'statusChecked', payload: data });

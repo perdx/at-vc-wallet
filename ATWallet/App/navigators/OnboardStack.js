@@ -29,7 +29,6 @@ const OnboardStack = (props) => {
     }, [state.startup, state.loading, check]);
 
     useEffect(() => {
-        console.log('onboard state:', state);
         if (state.loading) {
             navigation.navigate('OnboardLoading');
             return;
